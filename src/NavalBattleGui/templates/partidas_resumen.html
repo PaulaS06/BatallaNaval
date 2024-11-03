@@ -1,0 +1,32 @@
+<!-- src/NavalBattleGui/templates/partidas_resumen.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumen de Partidas de Batalla Naval</title>
+</head>
+<body>
+    <h1>Resumen de Partidas</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Jugador 1</th>
+                <th>Jugador 2</th>
+                <th>Fecha</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for partida in partidas %}
+            <tr>
+                <td>{{ partida.jugador1 }}</td>
+                <td>{{ partida.jugador2 }}</td>
+                <td>{{ partida.fecha }}</td>
+                <td>{{ partida.estado }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
