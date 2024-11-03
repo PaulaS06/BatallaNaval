@@ -1,7 +1,16 @@
 ## ¿Quién hizo esto?
 
+Entrega 1, 2, 3
+- Daniel Calle
+- Dilan Urrego
+
+Entrega 4
 - Steven Oviedo
 - Sara Moncada
+
+**Entrega 5**
+- Mario Andrade
+- Paula Meneses
 
 ## ¿Qué es y para qué es?
 
