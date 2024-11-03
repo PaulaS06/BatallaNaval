@@ -1,4 +1,3 @@
-# src/Console/Functions_DB.py
 import sqlite3
 
 def obtener_partida_por_id(partida_id):

@@ -2,14 +2,14 @@ def Actualizar():
     import sys
     sys.path.append("src")
 
-    from Model.NavalBattleModel import Model_NB
-    from Controller.NavalBattleController import Controller_NB
-    from Program import NavalBattle
+    from model.NavalBattleModel import Model_NB
+    from controller.NavalBattleController import Controller_NB
+    from src.model.logic import NavalBattle_logic
 
     def validar_numero(valor):
         """Función que verifica si el valor es un número."""
         if not valor.isdigit():
-            raise NavalBattle.NonNumericValueError("* Error: Se ingresó un valor no numérico.")
+            raise NavalBattle_logic.NonNumericValueError("* Error: Se ingresó un valor no numérico.")
 
     try:
         updated_game = Model_NB(starting_code=0, rows=0, columns=0, ship_count=0, hits=0, misses=0, total_shots=0, max_possible_shots=0, score=0)
@@ -21,13 +21,13 @@ def Actualizar():
                 starting_code = input("Ingrese el código de la partida que desea actualizar (5 dígitos): ")
                 validar_numero(starting_code)
                 if len(starting_code) != 5:
-                    raise NavalBattle.InvalidStartingCodeError("** Error: El código de partida debe ser un número de exactamente 5 dígitos.")
+                    raise NavalBattle_logic.InvalidStartingCodeError("** Error: El código de partida debe ser un número de exactamente 5 dígitos.")
                 partida_buscada = Controller_NB.BuscarCodigoPartida(starting_code)
                 print(f"* Partida {starting_code} encontrada: Tablero de {partida_buscada.rows}x{partida_buscada.columns}, Barcos: {partida_buscada.ship_count}, Puntaje obtenido: {partida_buscada.score}")
                 break
-            except NavalBattle.NonNumericValueError as e:
+            except NavalBattle_logic.NonNumericValueError as e:
                 print(e)
-            except NavalBattle.InvalidStartingCodeError as e:
+            except NavalBattle_logic.InvalidStartingCodeError as e:
                 print(e)
             except Exception as err:
                 print(f"**Error: No se encontró la partida con código {starting_code}.")
@@ -48,11 +48,11 @@ def Actualizar():
                 updated_game.columns = int(updated_game.columns)
 
                 if not (5 <= updated_game.rows <= 9 and 5 <= updated_game.columns <= 9):
-                    raise NavalBattle.InvalidDimensionError("** Error: El número de filas y columnas debe estar entre 5 y 9.")
+                    raise NavalBattle_logic.InvalidDimensionError("** Error: El número de filas y columnas debe estar entre 5 y 9.")
                 break
-            except NavalBattle.NonNumericValueError as e:
+            except NavalBattle_logic.NonNumericValueError as e:
                 print(e)
-            except NavalBattle.InvalidDimensionError as e:
+            except NavalBattle_logic.InvalidDimensionError as e:
                 print(e)
 
         # Validación del número de barcos
@@ -65,11 +65,11 @@ def Actualizar():
                 max_ship_count = min(updated_game.rows, updated_game.columns) - 1
 
                 if not (1 <= updated_game.ship_count <= max_ship_count):
-                    raise NavalBattle.InvalidShipCountError(f"** Error: El número de barcos debe estar entre 1 y {max_ship_count}.")
+                    raise NavalBattle_logic.InvalidShipCountError(f"** Error: El número de barcos debe estar entre 1 y {max_ship_count}.")
                 break
-            except NavalBattle.NonNumericValueError as e:
+            except NavalBattle_logic.NonNumericValueError as e:
                 print(e)
-            except NavalBattle.InvalidShipCountError as e:
+            except NavalBattle_logic.InvalidShipCountError as e:
                 print(e)
 
         # Validación del puntaje
@@ -81,11 +81,11 @@ def Actualizar():
                 updated_game.score = int(updated_game.score)
 
                 if not (0 <= updated_game.score <= 99999):
-                    raise NavalBattle.InvalidScoreError("** Error: El puntaje debe ser un número entre 0 y 9999.")
+                    raise NavalBattle_logic.InvalidScoreError("** Error: El puntaje debe ser un número entre 0 y 9999.")
                 break
-            except NavalBattle.NonNumericValueError as e:
+            except NavalBattle_logic.NonNumericValueError as e:
                 print(e)
-            except NavalBattle.InvalidScoreError as e:
+            except NavalBattle_logic.InvalidScoreError as e:
                 print(e)
 
         # Actualizar la partida

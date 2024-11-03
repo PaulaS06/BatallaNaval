@@ -1,7 +1,6 @@
 # src/DatabaseConnection.py
 
 import psycopg2
-from psycopg2 import sql
 
 class DatabaseConnection:
     def __init__(self):

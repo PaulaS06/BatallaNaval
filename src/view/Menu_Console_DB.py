@@ -1,7 +1,7 @@
-from Functions_DB import Insertar_Partida 
-from Functions_DB import Eliminar_Partida
-from Functions_DB import Buscar_Partida
-from Functions_DB import Actualizar_Partida 
+from controller.CRUD_BD import Insertar_Partida 
+from controller.CRUD_BD import Eliminar_Partida
+from controller.CRUD_BD import Buscar_Partida
+from controller.CRUD_BD import Actualizar_Partida 
 
 
 def mostrar_menu():

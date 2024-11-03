@@ -2,8 +2,8 @@ import sys
 sys.path.append("src")
 
 from NavalBattleGui.htmlreportgenerator import HTMLReportGenerator
-from Console.Functions_DB import Functions_DB as db_functions
-from Program.NavalBattle import NavalBattle, BoardError, BoardIsBigAndSmall, BoardIsTooSmall, BoardIsTooBig, NotEnoughSpace, InvalidCoordinate, RowOutOfRange, ColumnOutOfRange
+from controller.CRUD_BD import Functions_DB as db_functions
+from src.model.logic.NavalBattle_logic import NavalBattle, BoardError, BoardIsBigAndSmall, BoardIsTooSmall, BoardIsTooBig, NotEnoughSpace, InvalidCoordinate, RowOutOfRange, ColumnOutOfRange
 
 def mostrar_menu():
     print("Bienvenido al juego de Batalla Naval")

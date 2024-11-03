@@ -1,9 +1,9 @@
 import sys
 sys.path.append("src")
 # Importar NavalBattle desde donde está definido
-from Program.NavalBattle import NavalBattle
-from Controller.NavalBattleController import Controller_NB
-from Model.NavalBattleModel import Model_NB
+from logic.NavalBattle import NavalBattle
+from controller.NavalBattleController import Controller_NB
+from model.NavalBattleModel import Model_NB
 
 
 import kivy
