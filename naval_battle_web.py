@@ -24,7 +24,6 @@ class RouteApp:
             return redirect(url_for('reporte'))
         return render_template('buscar_partida.html')
 
-
     @naval_battle_web.route('/reporte', methods=['GET'])
     def reporte():
         starting_code = session.get('starting_code')
@@ -39,6 +38,9 @@ class RouteApp:
         return render_template('reporte_partida.html', 
                             partida=partida_buscada.starting_code,
                             tablero=partida_buscada.rows + "x" + partida_buscada.columns,
+                            disparos_efectivos = partida_buscada.hits,
+                            disparos_perdidos = partida_buscada.misses,
+                            disparos_totales = partida_buscada.total_shots,
                             barcos=partida_buscada.ship_count, 
                             puntaje=partida_buscada.score)
 
