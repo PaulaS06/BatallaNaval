@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Batalla Naval - Menú de Opciones</title>
+    <title>Buscar Partida - Batalla Naval</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -18,42 +18,47 @@
         }
         .container {
             background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             max-width: 400px;
             text-align: center;
         }
         h1 {
             font-size: 24px;
-            margin-bottom: 20px;
             color: #2e8b57;
+            margin-bottom: 20px;
         }
-        .menu-option {
-            display: block;
-            margin: 10px 0;
+        input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            font-size: 16px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .submit-btn {
             padding: 10px 20px;
             background-color: #4682b4;
             color: white;
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s;
+            font-size: 18px;
         }
-        .menu-option:hover {
+        .submit-btn:hover {
             background-color: #4169e1;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Menú de Opciones</h1>
-        <p>Selecciona una acción para administrar las partidas:</p>
-        
-        <!-- Enlaces a las distintas funcionalidades -->
-        <a href="agregar_partida.html" class="menu-option">Agregar Partida</a>
-        <a href="/buscar" class="menu-option">Buscar Partida</a>
-        <a href="/eliminar" class="menu-option">Eliminar Partida</a>
-        <a href="modificar_partida.html" class="menu-option">Modificar Partida</a>
+        <h1>Partida a eliminar</h1>
+        <form action="/eliminar" method="POST">
+            <label for="starting_code">Código de partida:</label>
+            <input type="text" id="starting_code" name="starting_code" required>
+            <button type="submit" class="submit-btn">Eliminar</button>
+        </form>
     </div>
 </body>
 </html>

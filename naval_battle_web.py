@@ -57,6 +57,35 @@ class RouteApp:
                             puntaje=partida_buscada.score)
 
 
+    @naval_battle_web.route('/eliminar', methods=['GET', 'POST'])
+    def eliminar_partida():
+        if request.method == 'POST':
+            starting_code = request.form['starting_code']
+            session['starting_code'] = starting_code
+            return redirect(url_for('resultado_eliminacion'))
+        return render_template('eliminar_partida.html')
+    
+    @naval_battle_web.route('/anuncio_eliminar', methods=['GET'])
+    def resultado_eliminacion():
+        starting_code = session.get('starting_code')
+        validar_numero(starting_code)
+        
+        if not starting_code:
+            return "Error: starting_code no proporcionado"
+        
+        try:
+            validar_numero(starting_code)
+            Controller_NB.EliminarPartida(starting_code)
+            result_message = f"Se eliminó la partida con código {starting_code} exitosamente."
+        except Exception as err:
+            result_message = f"Error: No se encontró la partida con código {starting_code}."
+            print(err)  # Log the error for debugging purposes
+        
+        return render_template('anuncio_eliminar.html', 
+                               partida=starting_code, 
+                               result_message=result_message)
+    
 
+    
 if __name__ == '__main__':
     naval_battle_web.run(debug=True)
