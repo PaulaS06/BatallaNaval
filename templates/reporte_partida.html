@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Batalla Naval - Bienvenida</title>
+    <title>Datos de la Partida - Batalla Naval</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -25,16 +25,26 @@
             text-align: center;
         }
         h1 {
-            font-size: 28px;
+            font-size: 24px;
             color: #2e8b57;
             margin-bottom: 20px;
         }
-        p {
-            font-size: 18px;
-            line-height: 1.6;
-            margin-bottom: 30px;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
         }
-        .start-btn {
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f0f8ff;
+        }
+        .back-btn {
             padding: 10px 20px;
             background-color: #4682b4;
             color: white;
@@ -43,20 +53,33 @@
             transition: background-color 0.3s;
             font-size: 18px;
         }
-        .start-btn:hover {
+        .back-btn:hover {
             background-color: #4169e1;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Bienvenido a Batalla Naval</h1>
-        <p>
-            Esta aplicación te permitirá administrar las partidas del juego Batalla Naval. 
-            Podrás agregar nuevas partidas, buscar una partida existente, eliminar una partida 
-            y modificar los datos de partidas anteriores. ¡Comencemos!
-        </p>
-        <a href="/menu" class="start-btn">Ir al Menú de Opciones</a>
+        <h1>Datos de la Partida</h1>
+        <table>
+            <tr>
+                <th>ID</th>
+                <td>{{partida}}</td> <!-- Aquí iría el ID real que se buscó -->
+            </tr>
+            <tr>
+                <th>Tablero</th>
+                <td>{{tablero}}</td>
+            </tr>
+            <tr>
+                <th>Barco</th>
+                <td>{{barco}}/td>
+            </tr>
+            <tr>
+                <th>Puntaje obtenido</th>
+                <td>{{puntaje}}</td>
+            </tr>
+        </table>
+        <a href="/buscar_partida" class="back-btn">Volver a Buscar</a>
     </div>
 </body>
 </html>

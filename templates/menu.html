@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Batalla Naval - Bienvenida</title>
+    <title>Batalla Naval - Menú de Opciones</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -18,45 +18,42 @@
         }
         .container {
             background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
             text-align: center;
         }
         h1 {
-            font-size: 28px;
-            color: #2e8b57;
+            font-size: 24px;
             margin-bottom: 20px;
+            color: #2e8b57;
         }
-        p {
-            font-size: 18px;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-        .start-btn {
+        .menu-option {
+            display: block;
+            margin: 10px 0;
             padding: 10px 20px;
             background-color: #4682b4;
             color: white;
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s;
-            font-size: 18px;
         }
-        .start-btn:hover {
+        .menu-option:hover {
             background-color: #4169e1;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Bienvenido a Batalla Naval</h1>
-        <p>
-            Esta aplicación te permitirá administrar las partidas del juego Batalla Naval. 
-            Podrás agregar nuevas partidas, buscar una partida existente, eliminar una partida 
-            y modificar los datos de partidas anteriores. ¡Comencemos!
-        </p>
-        <a href="/menu" class="start-btn">Ir al Menú de Opciones</a>
+        <h1>Menú de Opciones</h1>
+        <p>Selecciona una acción para administrar las partidas:</p>
+        
+        <!-- Enlaces a las distintas funcionalidades -->
+        <a href="agregar_partida.html" class="menu-option">Agregar Partida</a>
+        <a href="/buscar" class="menu-option">Buscar Partida</a>
+        <a href="eliminar_partida.html" class="menu-option">Eliminar Partida</a>
+        <a href="modificar_partida.html" class="menu-option">Modificar Partida</a>
     </div>
 </body>
 </html>

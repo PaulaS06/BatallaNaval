@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Batalla Naval - Bienvenida</title>
+    <title>Buscar Partida - Batalla Naval</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -21,20 +21,23 @@
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
+            max-width: 400px;
             text-align: center;
         }
         h1 {
-            font-size: 28px;
+            font-size: 24px;
             color: #2e8b57;
             margin-bottom: 20px;
         }
-        p {
-            font-size: 18px;
-            line-height: 1.6;
-            margin-bottom: 30px;
+        input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            font-size: 16px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
-        .start-btn {
+        .submit-btn {
             padding: 10px 20px;
             background-color: #4682b4;
             color: white;
@@ -43,20 +46,19 @@
             transition: background-color 0.3s;
             font-size: 18px;
         }
-        .start-btn:hover {
+        .submit-btn:hover {
             background-color: #4169e1;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Bienvenido a Batalla Naval</h1>
-        <p>
-            Esta aplicación te permitirá administrar las partidas del juego Batalla Naval. 
-            Podrás agregar nuevas partidas, buscar una partida existente, eliminar una partida 
-            y modificar los datos de partidas anteriores. ¡Comencemos!
-        </p>
-        <a href="/menu" class="start-btn">Ir al Menú de Opciones</a>
+        <h1>Buscar Partida</h1>
+        <form action="/buscar" method="get">
+            <label for="starting_code">Código de partida:</label>
+            <input type="text" id="starting_code" name="starting_code" required>
+            <button type="submit">Buscar</button>
+        </form>
     </div>
 </body>
 </html>

@@ -1,7 +1,7 @@
 import sys
 sys.path.append("src")
 # Importar NavalBattle desde donde está definido
-from logic.NavalBattle import NavalBattle
+from model.logic.NavalBattle_logic import NavalBattle
 from controller.NavalBattleController import Controller_NB
 from model.NavalBattleModel import Model_NB
 

@@ -1,38 +1,8 @@
 import sys
 sys.path.append("src")
 
-from NavalBattleGui.htmlreportgenerator import HTMLReportGenerator
-from controller.CRUD_BD import Functions_DB as db_functions
-from src.model.logic.NavalBattle_logic import NavalBattle, BoardError, BoardIsBigAndSmall, BoardIsTooSmall, BoardIsTooBig, NotEnoughSpace, InvalidCoordinate, RowOutOfRange, ColumnOutOfRange
+from model.logic.NavalBattle_logic import NavalBattle, BoardError, BoardIsBigAndSmall, BoardIsTooSmall, BoardIsTooBig, NotEnoughSpace, InvalidCoordinate, RowOutOfRange, ColumnOutOfRange
 
-def mostrar_menu():
-    print("Bienvenido al juego de Batalla Naval")
-    print("1. Jugar una nueva partida")
-    print("2. Ver reporte de una partida")
-    print("3. Ver resumen de todas las partidas")
-    print("4. Salir")
-
-    opcion = input("Seleccione una opción: ")
-    if opcion == "1":
-        # Lógica para iniciar una partida
-        pass
-    elif opcion == "2":
-        partida_id = input("Ingrese el ID de la partida: ")
-        partida = db_functions.obtener_partida_por_id(partida_id)  # Debes implementar esta función en Functions_DB
-        if partida:
-            report_generator = HTMLReportGenerator()
-            report_generator.render_partida_reporte(partida)
-        else:
-            print("No se encontró la partida con ese ID.")
-    elif opcion == "3":
-        partidas = db_functions.obtener_todas_las_partidas()  # Debes implementar esta función en Functions_DB
-        report_generator = HTMLReportGenerator()
-        report_generator.render_partidas_resumen(partidas)
-    elif opcion == "4":
-        print("Gracias por jugar.")
-        exit()
-    else:
-        print("Opción inválida.")
 
 if __name__ == "__main__":
     navalBattle = NavalBattle()
