@@ -1,7 +1,14 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 
 from src.controller.NavalBattleController import Controller_NB
+from src.model.logic import NavalBattle_logic
 
+def validar_numero(valor):
+    """Función que verifica si el valor es un número."""
+    if not valor.isdigit():
+        raise NavalBattle_logic.NonNumericValueError("** Error: Se ingresó un valor no numérico.")
+    if len(valor) != 5:
+        raise NavalBattle_logic.InvalidStartingCodeError("** Error: El código de partida debe ser un número de exactamente 5 dígitos.")
 
 naval_battle_web = Flask(__name__)
 naval_battle_web.secret_key = b'\xf0\xd1\x06\xb5_\x88\xec\x12=\x03b\xe75U\xd8\xa5'
@@ -16,6 +23,7 @@ class RouteApp:
     def elegir_opcion():
         return render_template('menu.html')
 
+
     @naval_battle_web.route('/buscar', methods=['GET', 'POST'])
     def buscar_partida():
         if request.method == 'POST':
@@ -27,13 +35,17 @@ class RouteApp:
     @naval_battle_web.route('/reporte', methods=['GET'])
     def reporte():
         starting_code = session.get('starting_code')
+        validar_numero(starting_code)
 
         if not starting_code:
             return "Error: starting_code no proporcionado"
-
-        partida_buscada = Controller_NB.BuscarCodigoPartida(starting_code)
-        if partida_buscada is None: 
-            return "Error: No se encontró el registro con el código proporcionado"
+        try:
+            partida_buscada = Controller_NB.BuscarCodigoPartida(starting_code)
+            if partida_buscada is None: 
+                return "Error: No se encontró el registro con el código proporcionado"
+        except Exception as err:
+            print(f"** Error: No se encontró la partida con código {starting_code}.")
+            raise err
 
         return render_template('reporte_partida.html', 
                             partida=partida_buscada.starting_code,
@@ -43,6 +55,7 @@ class RouteApp:
                             disparos_totales = partida_buscada.total_shots,
                             barcos=partida_buscada.ship_count, 
                             puntaje=partida_buscada.score)
+
 
 
 if __name__ == '__main__':

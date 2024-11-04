@@ -9,6 +9,8 @@ def Buscar():
         """Función que verifica si el valor es un número."""
         if not valor.isdigit():
             raise NavalBattle_logic.NonNumericValueError("** Error: Se ingresó un valor no numérico.")
+        if len(valor) != 5:
+            raise NavalBattle_logic.InvalidStartingCodeError("** Error: El código de partida debe ser un número de exactamente 5 dígitos.")
 
     try:
         print("\nSeleccionó la opción de BUSCAR. Siga los siguientes pasos:")
@@ -18,9 +20,6 @@ def Buscar():
             try:
                 starting_code = input("Ingrese el código de la partida que desea buscar (5 dígitos): ")
                 validar_numero(starting_code)
-                
-                if len(starting_code) != 5:
-                    raise NavalBattle_logic.InvalidStartingCodeError("** Error: El código de partida debe ser un número de exactamente 5 dígitos.")
                 
                 partida_buscada = Controller_NB.BuscarCodigoPartida(starting_code)
                 break  # Salir del ciclo si no hay errores
