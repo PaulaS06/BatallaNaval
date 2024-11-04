@@ -68,16 +68,46 @@ def Insertar():
         except NavalBattle_logic.InvalidShipCountError as e:
             print(e)
 
-    # Validación para score (número de máximo 4 cifras y mínimo 0)
+    # Validación para hits
     while True:
         try:
-            game.score = input("Ingrese el puntaje de la partida (máximo 5 dígitos, mínimo 0): ")
+            game.hits = input("Ingrese el número de impactos: ")
+            validar_numero(game.hits)
+            game.hits = int(game.hits)
+            break
+        except NavalBattle_logic.NonNumericValueError as e:
+            print(e)
+
+    # Validación para misses
+    while True:
+        try:
+            game.misses = input("Ingrese el número de fallos: ")
+            validar_numero(game.misses)
+            game.misses = int(game.misses)
+            break
+        except NavalBattle_logic.NonNumericValueError as e:
+            print(e)
+
+    # Validación para total_shots
+    while True:
+        try:
+            game.total_shots = game.hits + game.misses
+            break
+        except NavalBattle_logic.NonNumericValueError as e:
+            print(e)
+
+    # Validación para score (número de máximo 5 cifras y mínimo 0)
+    while True:
+        try:
+            game.naval_battle.stats['hits'] = game.hits
+            game.naval_battle.stats['misses'] = game.misses
+            game.naval_battle.stats['total_shots'] = game.total_shots
+            game.naval_battle.calculate_score()  # Llama al método en la instancia de NavalBattle
+            game.score = game.naval_battle.stats['score']  # Obtén el puntaje calculado
             validar_numero(game.score)
 
-            game.score = int(game.score)
-
             if not (0 <= game.score <= 99999):
-                raise NavalBattle_logic.InvalidScoreError("** Error: El puntaje debe ser un número entre 0 y 9999.")
+                raise NavalBattle_logic.InvalidScoreError("** Error: El puntaje debe ser un número entre 0 y 99999.")
             break
         except NavalBattle_logic.NonNumericValueError as e:
             print(e)

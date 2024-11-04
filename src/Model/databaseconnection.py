@@ -1,5 +1,3 @@
-# src/DatabaseConnection.py
-
 import psycopg2
 
 class DatabaseConnection:
