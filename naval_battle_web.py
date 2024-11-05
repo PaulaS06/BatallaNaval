@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 
 from src.controller.NavalBattleController import Controller_NB
 from src.model.logic import NavalBattle_logic
+from src.model.NavalBattleModel import Model_NB
 
 def validar_numero(valor):
     """Función que verifica si el valor es un número."""
@@ -84,7 +85,53 @@ class RouteApp:
         return render_template('anuncio_eliminar.html', 
                                partida=starting_code, 
                                result_message=result_message)
+        
+    @naval_battle_web.route('/insertar', methods=['GET', 'POST'])
+    def insertar_partida():
+        if request.method == 'POST':
+            try:
+                # Obtener los valores del formulario
+                starting_code = request.form.get('starting_code')
+                validar_numero(starting_code)
+                if len(starting_code) != 5:
+                    raise NavalBattle_logic.InvalidStartingCodeError("** Error: El código de partida debe ser un número de exactamente 5 dígitos.")
     
+                rows = request.form.get('rows')
+                rows = int(rows)
+                columns = request.form.get('columns')
+                columns = int(columns)
+                ship_count = request.form.get('ship_count')
+                hits = request.form.get('hits')
+                hits = int(hits)
+                misses = request.form.get('misses')
+                misses = int(misses)
+                total_shots = hits + misses
+                max_possible_shots = rows * columns
+                score = request.form.get('score')
+    
+                nueva_partida = Model_NB(
+                    starting_code=starting_code,
+                    rows=rows,
+                    columns=columns,
+                    ship_count=ship_count,
+                    hits=hits,
+                    misses=misses,
+                    total_shots=total_shots,
+                    max_possible_shots=max_possible_shots,
+                    score=score
+                )
+                # Guardar en la base de datos
+                Controller_NB.Insertar(nueva_partida)
+                flash('Partida insertada exitosamente', 'success')
+                return redirect(url_for('anuncio_insertar'))
+            except Exception as e:
+                flash(str(e), 'error')
+                return redirect(url_for('anuncio_insertar'))
+        return render_template('insertar_partida.html')
+    
+    @naval_battle_web.route('/anuncio_insertar', methods=['GET'])
+    def anuncio_insertar():
+        return render_template('anuncio_insertar.html')
 
     
 if __name__ == '__main__':
