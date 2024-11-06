@@ -43,7 +43,7 @@ class Controller_NB:
 
 
     def Insertar( game : Model_NB) :
-        """ Recibe un a instancia de la clase Model_NV y la inserta en la tabla respectiva"""
+        """ Recibe un a instancia de la clase Model_NB y la inserta en la tabla respectiva"""
         cursor = Controller_NB.ObtenerCursor()
         cursor.execute( f"""insert into navalbattle (starting_code, rows, columns, ship_count, hits, misses, total_shots, max_possible_shots, score) 
                         values ('{game.starting_code}', '{game.rows}', '{game.columns}', '{game.ship_count}', '{game.hits}', {game.misses}, 
