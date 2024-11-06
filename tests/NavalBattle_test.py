@@ -1,11 +1,9 @@
-import sys
-import os
 import unittest
+# import sys
+# sys.path.append( "." )
+# sys.path.append( "src" )
 
-# Agregar la ruta al directorio raíz del proyecto
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
-from src.logic import NavalBattle
+from src.Model.logic.NavalBattle_logic import NavalBattle
 
 
 class GameTest(unittest.TestCase):

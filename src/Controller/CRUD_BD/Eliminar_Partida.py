@@ -4,9 +4,9 @@ def Eliminar():
     sys.path.append("src")
 
 
-    from model.NavalBattleModel import Model_NB
-    from controller.NavalBattleController import Controller_NB
-    from src.model.logic import NavalBattle_logic
+    from Model.NavalBattleModel import Model_NB
+    from Controller.NavalBattleController import Controller_NB
+    from Model.logic import NavalBattle_logic
 
     def validar_numero(valor):
         """Función que verifica si el valor es un número."""

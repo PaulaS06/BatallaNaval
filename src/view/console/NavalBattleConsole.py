@@ -1,7 +1,7 @@
 import sys
 sys.path.append("src")
 
-from model.logic.NavalBattle_logic import NavalBattle, BoardError, BoardIsBigAndSmall, BoardIsTooSmall, BoardIsTooBig, NotEnoughSpace, InvalidCoordinate, RowOutOfRange, ColumnOutOfRange
+from Model.logic.NavalBattle_logic import NavalBattle, BoardError, BoardIsBigAndSmall, BoardIsTooSmall, BoardIsTooBig, NotEnoughSpace, InvalidCoordinate, RowOutOfRange, ColumnOutOfRange
 
 
 if __name__ == "__main__":

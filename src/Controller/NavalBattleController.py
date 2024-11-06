@@ -4,7 +4,7 @@ sys.path.append( "src" )
 
 import psycopg2
 
-from model.NavalBattleModel import Model_NB
+from Model.NavalBattleModel import Model_NB
 import SecretConfig
 
 class Controller_NB:

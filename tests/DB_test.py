@@ -1,6 +1,7 @@
 import unittest
-import sys
-sys.path.append( "." )
+# import sys
+# sys.path.append( "." )
+# sys.path.append( "src" )
 
 from src.Model.NavalBattleModel import Model_NB
 from src.Controller.NavalBattleController import Controller_NB

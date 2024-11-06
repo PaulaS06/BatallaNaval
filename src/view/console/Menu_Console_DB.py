@@ -1,10 +1,10 @@
 import sys
 sys.path.append("src")
 
-from controller.CRUD_BD import Insertar_Partida 
-from controller.CRUD_BD import Eliminar_Partida
-from controller.CRUD_BD import Buscar_Partida
-from controller.CRUD_BD import Actualizar_Partida 
+from Controller.CRUD_BD import Insertar_Partida 
+from Controller.CRUD_BD import Eliminar_Partida
+from Controller.CRUD_BD import Buscar_Partida
+from Controller.CRUD_BD import Actualizar_Partida 
 
 
 def mostrar_menu():

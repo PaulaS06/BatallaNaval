@@ -1,4 +1,3 @@
-
 class Model_NB :
     """
     Pertenece la Capa de Reglas de Negocio (Model)

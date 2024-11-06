@@ -22,28 +22,37 @@ Entrega 4
 - **Prerrequisitos:**
 Instalar Python: Asegúrate de tener Python instalado en tu sistema. Puedes descargarlo e instalarlo desde python.org.
 
-- **Librerías:** Las únicas librerías usadas para este desarrollo son "random" y "kivy", "random" está incluida por defecto en pyhon; debes instalar "kivy" para poder correr la aplicación desde una interfaz gráfica.
+- **Librerías:** Las librerías usadas para este desarrollo son "random" y "kivy", "random" está incluida por defecto en pyhon; debes instalar "kivy" para poder correr la aplicación desde una interfaz gráfica.
 
-- **Código del Juego:** Asegúrate de tener todos los archivos necesarios del proyecto en una carpeta organizada.
 
 - **Ejecución del juego en consola:**
-Navega a la carpeta: Una vez que hayas clonado el archivo, abre el cmd y navega a la carpeta en la que guardaste el archivo, por ejemplo:
-```C:\Users\durre\Documentos\Universidad\Semestre4\CodigoLimpio\NavalBattleGame```
+Navega a la carpeta: Una vez que hayas clonado el repositorio, abre el cmd busca la siguiente ruta que contiene la carpeta con el archivo:
+```src\view\console\NavalBattleConsole.py```
 
-**Ejecuta el script main:**
-```python src\Console\NavalBattleConsole.py```
+- **Ejecución de la Base de Datos en consola:**
+Navega a la carpeta: Una vez que hayas clonado el repositorio, abre el cmd busca la siguiente ruta que contiene la carpeta con el archivo:
+```src\view\console\Menu_Console_DB.py```
+
+- **Ejecución del juego en interfaz gráfica de kivy:**
+Navega a la carpeta: Una vez que hayas clonado el repositorio, abre el cmd busca la siguiente ruta que contiene la carpeta con el archivo:
+```src\view\GUI\NavalBattle-gui.py```
+
+- ### **Ejecución de la Base de Datos en aplicación web**
+Busca el archivo principal: Una vez que hayas clonado el repositorio, abre el cmd busca el siguiente archivo:
+```naval_battle_web.py```
+
+- **Librerías para la aplcación web:** Las librerías usadas para este desarrollo son "psycopg2" y "flask", para instalarlas ejecuta por consola: 
+```pip install psycopg2```
+```pip install flask```
+
+Al correr el archivo principal, podrás obtener el link que deberás pegar en el explorador de tu preferencia para visualizar la aplicación web.
+En la aplicación web podras elegir como quieras manipular las partidsa del juego:
+- Insertar
+- Buscar
+- Eliminar
+- Modificar
 
 
-### **Ejecución del juego en interfaz gráfica de kivy**
-
-- **Navega a la carpeta:** Una vez que hayas clonado el archivo, abre el cmd y navega a la carpeta en la que guardaste el archivo, por ejemplo:
-```C:\Users\durre\Documentos\Universidad\Semestre4\CodigoLimpio\NavalBattleGame```
-
-- **Ejecuta el script main:**
-```python src\NavalBattleGui\NavalBattle-gui.py```
-
-- **Instrucciones en Pantalla:** 
-Una vez ejecutado, sigue las instrucciones que aparecerán en la consola para jugar. El juego interactuará contigo a través de mensajes de texto y comandos de teclado. 
 
 ## ¿Cómo está hecho?
 
@@ -61,8 +70,8 @@ El proyecto define varias excepciones personalizadas para manejar errores espec�
 
 - *Dependencias de Otros Proyectos:* No hay dependencias externas de otros proyectos o librerías adicionales más allá de las excepciones personalizadas y la biblioteca estándar random. Todo el juego está contenido dentro de una única clase y conjunto de excepciones personalizadas definidas en el mismo script.
 
-- **Organización de los Módulos:**
-*Carpeta Principal: "NAVAL BATTLE GAME"*
+**Organización de los Módulos:**
+*Carpeta Principal: "NAVAL BATTLE"*
 
 Contiene archivos y carpetas esenciales para el proyecto.
 
@@ -73,38 +82,41 @@ Contiene archivos y carpetas esenciales para el proyecto.
 - ```__init__.py:``` Permite que la carpeta se trate como un paquete Python, facilitando la importación de módulos internos.
 - ```__pycache__:``` Carpeta generada automáticamente por Python para almacenar archivos compilados en bytecode (.pyc), lo que mejora la velocidad de carga de los módulos.
 
+- ```SecretConfig_Sample.py:``` De este archivo deberas guiarte para la creación de tu archivo "SecretConfig.py" con tu información para la creación de tablas en la base de datos. 
 
-## Estructura sugerida
+
+## Estructura proyecto (MVC)
 
 - **Carpeta src:**
 Esta carpeta contiene el código fuente del proyecto, dividido en módulos organizados.
 Subcarpetas:
 
-1.*Console*
+1.*Model*
 
-- **Functions_DB.py:** Este archivo incluye funciones relacionadas con la base de datos del juego, como la creación o modificación de registros.
+- **Logic:** Contiene la implementación principal del juego de Batalla Naval, incluyendo clases y lógica relacionadas con la gestión del tablero, la colocación de barcos, y las mecánicas del juego.
 
-- **Crear_partida.py:** Se encarga de gestionar la creación de nuevas partidas
+- **databaseconnection:** Se encarga de la lógica relacionada con la gestión de la conexión a la base de datos y la creación de nuevas partidas.
 
-- **Menu_Console_DB.py**: Contiene la lógica del menú que permite realizar operaciones relacionadas con la base de datos del juego.
+- **NavalBattleModel**: Contiene la lógica del menú que permite realizar operaciones relacionadas con la base de datos del juego.
 
-- **NavalBattleConsole.py:** Contiene la lógica del juego interactuando con la consola.
 
 2. *Controller:*
 
 - **NavalBattleController.py:** Archivo que es el responsable de actuar como intermediario entre la lógica del juego y la interfaz de usuario (tanto consola como GUI)
 
-3. *Model:*
+- **CRUD:** Carpeta que contiene la lógical del manejo de Base de Datos (Insertas, Eliminar, Actualizar y Buscar)
 
-- **NavalBattleModel.py:** Contiene el modelo del juego
+3. *View:*
 
-4. *NavalBattleGui*
+#### Console
+- **Menu_Console_DB.py**: Contiene la lógica del menú que permite realizar operaciones relacionadas con la base de datos del juego.
+
+- **NavalBattleConsole.py:** Contiene la lógica del juego interactuando con la consola.
+
+#### GUI
 
 - **NavalBattle-gui.py:** Contiene la lógica del juego interactuando en una interfaz gráfica de kivy
 
-5. *Program*
-
-- **NavalBattle.py:** Contiene la implementación principal del juego de Batalla Naval, incluyendo clases y lógica relacionadas con la gestión del tablero, la colocación de barcos, y las mecánicas del juego.
 
 6. *tests*
 
@@ -112,15 +124,20 @@ Subcarpetas:
 
 - **Test_DB.py:** Contiene las pruebas relacionadas con las funcionalidades de la base de datos
 
+7. *Templates*
+
+Contiene los archivos html vinculados a flask para el desarrollo de la plicaión web.
+
 ## Uso de las Pruebas Unitarias 
 
 Para ejecutar las pruebas unitarias desde el directorio raíz, ejecuta el archivo ```Test_DB.py``` con el siguiente comando:
 
 - **Casos de prueba para el juego de batalla naval:**
-```python tests/NavalBattleTests.py``` 
+```python tests\NavalBattle_test.py``` 
 
 - **Casos de prueba de la base de datos:**
-```python tests/Test_DB.py```  
+```python tests\DB_test.py```  
+
 
 ## Como hago funcionar la base de datos?
 
@@ -132,7 +149,3 @@ Luego, realiza los siguientes pasos
 
 2. Instala el paquete psycopg2 utilizando el siguiente comando:
 ```pip install psycopg2```
-
-
-
-`

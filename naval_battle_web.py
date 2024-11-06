@@ -1,8 +1,11 @@
 from flask import Flask, render_template, request, redirect, url_for
 
-from src.controller.NavalBattleController import Controller_NB
-from src.model.NavalBattleModel import Model_NB
-from src.model.logic.NavalBattle_logic import NonNumericValueError, EmptyStartingCodeError, InvalidLengthCodeError, InvalidTypeError, InvalidDimensionError, NonNumericValueErrorShots, InvalidScoreLimitError
+# import sys
+# sys.path.append("src")
+
+from src.Controller.NavalBattleController import Controller_NB
+from src.Model.NavalBattleModel import Model_NB
+from src.Model.logic.NavalBattle_logic import NonNumericValueError, EmptyStartingCodeError, InvalidLengthCodeError, InvalidTypeError, InvalidDimensionError, NonNumericValueErrorShots, InvalidScoreLimitError
 
 naval_battle_web = Flask(__name__)
 
