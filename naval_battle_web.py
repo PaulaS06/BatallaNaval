@@ -57,8 +57,8 @@ class RouteApp:
         return render_template('resultado_partida.html', 
                             partida=partida_buscada.starting_code,
                             tablero=partida_buscada.rows + "x" + partida_buscada.columns,
-                            disparos_efectivos = partida_buscada.hits,
-                            disparos_perdidos = partida_buscada.misses,
+                            impactos = partida_buscada.hits,
+                            fallos = partida_buscada.misses,
                             disparos_totales = partida_buscada.total_shots,
                             barcos=partida_buscada.ship_count, 
                             puntaje=partida_buscada.score)
@@ -105,27 +105,67 @@ class RouteApp:
 
                 if not starting_code:
                     result_message = "Error: código no proporcionado"
-                    return render_template('anuncio_insertar.html', result_message=result_message)
+                    return render_template('anuncio_insertar.html', result_message=result_message, starting_code=starting_code)
                 if not starting_code.isdigit():
                     result_message = "Error: Debe ingresar un valor numérico."
-                    return render_template('anuncio_insertar.html', result_message=result_message)
+                    return render_template('anuncio_insertar.html', result_message=result_message, starting_code=starting_code)
                 if len(starting_code) != 5:
                     result_message = "Error: El código de partida debe ser un número de exactamente 5 dígitos."
-                    return render_template('anuncio_insertar.html', result_message=result_message)
+                    return render_template('anuncio_insertar.html', result_message=result_message, starting_code=starting_code)
 
                 rows = request.form.get('rows')
-                rows = int(rows)
                 columns = request.form.get('columns')
+
+                if not rows.isdigit():
+                    result_message = "Error: Debe ingresar un valor numérico."
+                    return render_template('anuncio_insertar.html', result_message=result_message, starting_code=starting_code)
+                if not columns.isdigit():
+                    result_message = "Error: Debe ingresar un valor numérico."
+                    return render_template('anuncio_insertar.html', result_message=result_message, starting_code=starting_code)
+                
+                rows = int(rows)
                 columns = int(columns)
+
+                if not (5 <= rows <= 9 and 5 <= columns <= 9):
+                    result_message = "Error: El número de filas y columnas debe estar entre 5 y 9."
+                    return render_template('anuncio_insertar.html', result_message=result_message, starting_code=starting_code)
+
                 ship_count = request.form.get('ship_count')
+                if not ship_count.isdigit():
+                    result_message = "Error: Debe ingresar un valor numérico."
+                    return render_template('anuncio_insertar.html', result_message=result_message, starting_code=starting_code)
+                ship_count = int(ship_count)
+                max_ship_count = min(rows, columns) - 1
+
+                if not (1 <= ship_count <= max_ship_count):
+                    result_message = f"Error: El número de barcos debe estar entre 1 y {max_ship_count}."
+                    return render_template('anuncio_insertar.html', result_message=result_message, starting_code=starting_code)
+
                 hits = request.form.get('hits')
+                if not hits.isdigit():
+                    result_message = "Error: Debe ingresar un valor numérico."
+                    return render_template('anuncio_insertar.html', result_message=result_message, starting_code=starting_code)
                 hits = int(hits)
+            
                 misses = request.form.get('misses')
+                if not misses.isdigit():
+                    result_message = "Error: Debe ingresar un valor numérico."
+                    return render_template('anuncio_insertar.html', result_message=result_message, starting_code=starting_code)
                 misses = int(misses)
+            
                 total_shots = hits + misses
                 max_possible_shots = rows * columns
+            
                 score = request.form.get('score')
-    
+                if not score.isdigit():
+                    result_message = "Error: Debe ingresar un valor numérico."
+                    return render_template('anuncio_insertar.html', result_message=result_message, starting_code=starting_code)
+                score = int(score)
+            
+                if not (0 <= score <= 99999):
+                    result_message = "Error: El puntaje debe ser un número entre 0 y 9999."
+                    return render_template('anuncio_insertar.html', result_message=result_message, starting_code=starting_code)
+            
                 nueva_partida = Model_NB(
                     starting_code=starting_code,
                     rows=rows,
@@ -137,19 +177,15 @@ class RouteApp:
                     max_possible_shots=max_possible_shots,
                     score=score
                 )
-
+            
                 Controller_NB.Insertar(nueva_partida)
                 result_message = f'Partida {starting_code} insertada exitosamente'
-                return render_template('anuncio_insertar.html')
+                return render_template('anuncio_insertar.html', result_message=result_message, starting_code=starting_code)
             
-            except Exception:
-                result_message = f'Error al insertar la partida, intentelo de nuevo'
-                return render_template('anuncio_insertar.html', result_message=result_message)
+            except Exception as e:
+                result_message = f'Error al insertar la partida, intentelo de nuevo. Detalles del error: {str(e)}'
+                return render_template('anuncio_insertar.html', result_message=result_message, starting_code=starting_code)
         return render_template('insertar_partida.html')
-    
-    @naval_battle_web.route('/anuncio_insertar')
-    def anuncio_insertar():
-        return render_template('anuncio_insertar.html')
 
     
 

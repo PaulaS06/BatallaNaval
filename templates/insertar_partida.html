@@ -55,6 +55,9 @@
         .submit-btn:hover {
             background-color: #4169e1;
         }
+        input::placeholder {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -62,20 +65,20 @@
         <h1>Ingresar Nueva Partida</h1>
         <p>Ingrese los datos de la partida que desea ingresar.</p>
         <form action="/insertar" method="post">
-            <label for="starting_code">Starting Code:</label>
-            <input type="text" id="starting_code" name="starting_code" required><br>
-            <label for="rows">Rows:</label>
-            <input type="text" id="rows" name="rows" required><br>
-            <label for="columns">Columns:</label>
-            <input type="text" id="columns" name="columns" required><br>
-            <label for="ship_count">Ship Count:</label>
+            <label for="starting_code">Código partida</label>
+            <input type="text" id="starting_code" name="starting_code" placeholder="5 digitos numéricos" required><br>
+            <label for="rows">Filas:</label>
+            <input type="text" id="rows" name="rows" placeholder="Entre 5 y 9" required><br>
+            <label for="columns">Columnas:</label>
+            <input type="text" id="columns" name="columns" placeholder="Entre 5 y 9" required><br>
+            <label for="ship_count">Barcos:</label>
             <input type="text" id="ship_count" name="ship_count" required><br>
-            <label for="hits">Hits:</label>
+            <label for="hits">Impactos:</label>
             <input type="text" id="hits" name="hits" required><br>
-            <label for="misses">Misses:</label>
+            <label for="misses">Fallos:</label>
             <input type="text" id="misses" name="misses" required><br>
-            <label for="score">Score:</label>
-            <input type="text" id="score" name="score" required><br>
+            <label for="score">Puntaje:</label>
+            <input type="text" id="score" name="score" placeholder="Máximo 5 dígitos"required><br>
             <button type="submit" class="submit-btn">Insertar</button>
         </form>
     </div>
