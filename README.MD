@@ -1,43 +1,43 @@
-## Autores
-Entrega 1, 2, 3
+## Authors 
+Part 1, 2, 3
 - Daniel Calle
 - Dilan Urrego
 
-Entrega 4
+Part 4
 - Steven Oviedo
 - Sara Moncada
 
-**Entrega 5**
+**Part 5**
 - Mario Andrade
 - Paula Meneses
 
-## ¿Qué es y para qué es?
-- El juego de Batalla Naval es un juego de estrategia en el que el objetivo es hundir los barcos del oponente (en este caso la máquina) adivinando sus ubicaciones en un tablero.
-- El juego de Batalla Naval en modalidad individual proporciona un desafío de lógica y estrategia, ya que el jugador debe deducir la posición de los barcos enemigos basándose en los resultados de sus disparos. Además, es entretenido y puede mejorar la capacidad de razonamiento lógico y la toma de decisiones del jugador.
+## What is it and what is it for?
+- The Naval Battle game is a strategy game in which the objective is to sink the opponent's ships (in this case the machine) by guessing their locations on a board.
+- The Naval Battle game in single mode provides a challenge of logic and strategy, since the player must deduce the position of enemy ships based on the results of their shots. Furthermore, it is entertaining and can improve the player's logical reasoning and decision-making abilities.
 
-## ¿Cómo lo hago funcionar?
-- **Prerrequisitos:**
-Instalar Python: Asegúrate de tener Python instalado en tu sistema. Puedes descargarlo e instalarlo desde python.org.
+## How do I make it work?
+- **Prerequisites:**
+Install Python: Make sure you have Python installed on your system. You can download and install it from python.org.
 
-- **Librerías:** Las librerías usadas para este desarrollo son "random" y "kivy", "random" está incluida por defecto en pyhon; debes instalar "kivy" para poder correr la aplicación desde una interfaz gráfica.
+- **Libraries:** The libraries used for this development are "random" and "kivy", "random" is included by default in pyhon; you must install "kivy" to be able to run the application from a graphical interface.
 
-- **Ejecución del juego en consola:**
-Navega a la carpeta: Una vez que hayas clonado el repositorio, abre el cmd busca la siguiente ruta que contiene la carpeta con el archivo:
+- **Execution of the game on console:**
+Navigate to the folder: Once you have cloned the repository, open cmd and look for the following path that contains the folder with the file:
 ```src\view\console\NavalBattleConsole.py```
 
-- **Ejecución de la Base de Datos en consola:**
-Navega a la carpeta: Una vez que hayas clonado el repositorio, abre el cmd busca la siguiente ruta que contiene la carpeta con el archivo:
+- **Execution of the Database in console:**
+Navigate to the folder: Once you have cloned the repository, open cmd and look for the following path that contains the folder with the file:
 ```src\view\console\Menu_Console_DB.py```
 
-- **Ejecución del juego en interfaz gráfica de kivy:**
-Navega a la carpeta: Una vez que hayas clonado el repositorio, abre el cmd busca la siguiente ruta que contiene la carpeta con el archivo:
+- **Execution of the game in kivy graphical interface:**
+Navigate to the folder: Once you have cloned the repository, open cmd and look for the following path that contains the folder with the file:
 ```src\view\GUI\NavalBattle-gui.py```
 
-- ## **Ejecución de la Base de Datos en aplicación web**
-Busca el archivo principal: Una vez que hayas clonado el repositorio, abre el cmd busca el siguiente archivo:
+- ## **Execution of the Database in a web application**
+Find the main file: Once you have cloned the repository, open cmd and look for the following file:
 ```naval_battle_web.py```
 
-**Librerías para la aplcación web:** Las librerías usadas para este desarrollo son "psycopg2", "sqlite3" y "flask", para instalarlas ejecuta por consola: 
+**Libraries for the web application:** The libraries used for this development are "psycopg2", "sqlite3" and "flask", to install them run through the console:
 
 - ```pip install psycopg2```
 
@@ -45,119 +45,119 @@ Busca el archivo principal: Una vez que hayas clonado el repositorio, abre el cm
 
 - ```pip install sqlite3```
 
-Al correr el archivo principal, te arrojará un link que deberás copiar y pegar en el explorador de tu preferencia para visualizar la aplicación web.
-Por ejemplo: 
+When you run the main file, it will give you a link that you must copy and paste into the browser of your choice to view the web application.
+For example:
 
 ```* Running on http://127.0.0.1:5000```
 
 
-En la aplicación web podras elegir como quieras manipular las partidas del juego:
-- Insertar
-- Buscar
-- Eliminar
-- Modificar
+In the web application you can choose how you want to manipulate the game games:
+- Insert
+- Search
+- Delete
+- Modify
 
-## Como hago funcionar la base de datos?
+## How do I make the database work?
 
-**Prerrequisitos:** Asegurese de tener una cuenta en Neon Console (https://console.neon.tech/), para poder tener sus respectivos datos de acceso.
+**Prerequisites:** Make sure you have an account in Neon Console (https://console.neon.tech/), so you can have your respective access information.
 
-Realizar los siguientes pasos para configurar la conexión de la Base de Datos:
+Perform the following steps to configure the Database connection:
 
-1. Duplica el archivo ``` Secret_Config-sample.py```  y renómbralo como ``` Secret_Config.py``` . Luego, reemplaza los datos de conexión de tu base de datos de NeonTech dentro de este nuevo archivo(SecretConfig.py).
-Así:
+1. Duplicate the file ``` Secret_Config-sample.py``` and rename it ``` Secret_Config.py``` . Then, replace your NeonTech database connection data into this new file (SecretConfig.py).
+Example:
 ![alt text](image.png)
 
 
-2. Instala el paquete psycopg2 utilizando el siguiente comando:
+2. Install the psycopg2 package using the following command:
 
 ```pip install psycopg2```
 
-3. Instala sqlite3 con el siguiente comando: 
+3. Install sqlite3 with the following command:
 
 ```pip install sqlite3```
 
 
 
-## ¿Cómo está hecho?
+##How is it made?
 
-**Arquitectura del Proyecto:**
+**Project Architecture:**
 
-- **Clases y Excepciones Personalizadas:**
+- **Custom Classes and Exceptions:**
 
-El proyecto define varias excepciones personalizadas para manejar errores específicos relacionados con la configuración y ejecución del juego, como NotEnoughSpace, BoardIsTooSmall, BoardIsTooBig, InvalidCoordinate, entre otras.
+The project defines several custom exceptions to handle specific errors related to game setup and execution, such as NotEnoughSpace, BoardIsTooSmall, BoardIsTooBig, InvalidCoordinate, among others.
 
-- *Clase Principal - NavalBattle:* Esta es la clase principal que gestiona toda la lógica del juego.
+- *Main Class - NavalBattle:* This is the main class that manages all the logic of the game.
 
-- *Ejecución Principal:* En el bloque if __name__ == "__main__":, el programa interactúa con el usuario para configurar el tamaño del tablero y la cantidad de barcos, y luego permite al jugador realizar disparos hasta que todos los barcos enemigos sean hundidos.
+- *Main Execution:* In the if __name__ == "__main__": block, the program interacts with the user to set the size of the board and the number of ships, and then allows the player to fire until all enemy ships are sunken
 
-- *Bibliotecas Usadas:* random: Se utiliza para generar posiciones aleatorias para los barcos en el tablero.
+- *Libraries Used:* random: Used to generate random positions for ships on the board.
 
-- *Dependencias de Otros Proyectos:* No hay dependencias externas de otros proyectos o librerías adicionales más allá de las excepciones personalizadas y la biblioteca estándar random. Todo el juego está contenido dentro de una única clase y conjunto de excepciones personalizadas definidas en el mismo script.
+- *Dependencies on Other Projects:* There are no external dependencies on other projects or additional libraries beyond custom exceptions and the random standard library. The entire game is contained within a single class and set of custom exceptions defined in the same script.
 
-**Organización de los Módulos:**
-*Carpeta Principal: "NAVAL BATTLE"*
+**Organization of the Modules:**
+*Main Folder: "NAVAL BATTLE"*
 
-Contiene archivos y carpetas esenciales para el proyecto.
+Contains essential files and folders for the project.
 
-- ```.gitignore:``` Define qué archivos o carpetas deben ser ignorados por el sistema de control de versiones (Git).
+- ```.gitignore:``` Defines which files or folders should be ignored by the version control system (Git).
 
-- ```LICENSE:``` Contiene la licencia del proyecto, especificando los términos de uso, distribución y contribución.
+- ```LICENSE:``` Contains the project license, specifying the terms of use, distribution and contribution.
 
-- ```__init__.py:``` Permite que la carpeta se trate como un paquete Python, facilitando la importación de módulos internos.
-- ```__pycache__:``` Carpeta generada automáticamente por Python para almacenar archivos compilados en bytecode (.pyc), lo que mejora la velocidad de carga de los módulos.
+- ```__init__.py:``` Allows the folder to be treated as a Python package, making it easier to import internal modules.
+- ```__pycache__:``` Automatically generated folder by Python to store compiled bytecode (.pyc) files, which improves module loading speed.
 
-- ```SecretConfig_Sample.py:``` De este archivo deberas guiarte para la creación de tu archivo "SecretConfig.py" con tu información para la creación de tablas en la base de datos. 
+- ```SecretConfig_Sample.py:``` From this file you should guide yourself to create your "SecretConfig.py" file with your information for creating tables in the database.
 
 
-## Estructura proyecto (MVC)
+## Project structure (MVC)
 
-- **Carpeta src:**
-Esta carpeta contiene el código fuente del proyecto, dividido en módulos organizados.
-Subcarpetas:
+- **src folder:**
+This folder contains the source code of the project, divided into organized modules.
+Subfolders:
 
 1.*Model*
 
-- **Logic:** Contiene la implementación principal del juego de Batalla Naval, incluyendo clases y lógica relacionadas con la gestión del tablero, la colocación de barcos, y las mecánicas del juego.
+- **Logic:** Contains the main implementation of the Naval Battle game, including classes and logic related to board management, ship placement, and game mechanics.
 
-- **databaseconnection:** Se encarga de la lógica relacionada con la gestión de la conexión a la base de datos y la creación de nuevas partidas.
+- **databaseconnection:** It is responsible for the logic related to managing the connection to the database and the creation of new games.
 
-- **NavalBattleModel**: Contiene la lógica del menú que permite realizar operaciones relacionadas con la base de datos del juego.
+- **NavalBattleModel**: Contains the menu logic that allows you to perform operations related to the game database.
 
 
 2. *Controller:*
 
-- **NavalBattleController.py:** Archivo que es el responsable de actuar como intermediario entre la lógica del juego y la interfaz de usuario (tanto consola como GUI)
+- **NavalBattleController.py:** File that is responsible for acting as an intermediary between the game logic and the user interface (both console and GUI)
 
-- **CRUD:** Carpeta que contiene la lógical del manejo de Base de Datos (Insertas, Eliminar, Actualizar y Buscar)
+- **CRUD:** Folder that contains the database management logic (Insert, Delete, Update and Search)
 
 3. *View:*
 
 #### Console
-- **Menu_Console_DB.py**: Contiene la lógica del menú que permite realizar operaciones relacionadas con la base de datos del juego.
+- **Menu_Console_DB.py**: Contains the menu logic that allows you to perform operations related to the game database.
 
-- **NavalBattleConsole.py:** Contiene la lógica del juego interactuando con la consola.
+- **NavalBattleConsole.py:** Contains the game logic interacting with the console.
 
 #### GUI
 
-- **NavalBattle-gui.py:** Contiene la lógica del juego interactuando en una interfaz gráfica de kivy
+- **NavalBattle-gui.py:** Contains the game logic interacting in a kivy graphical interface
 
 
 6. *tests*
 
-- **NavalBattleTests.py:** Contiene los casos de prueba para la clase NavalBattle y sus métodos, probablemente utilizando un framework de pruebas como unittest o pytest.
+- **NavalBattleTests.py:** Contains the test cases for the NavalBattle class and its methods, probably using a testing framework such as unittest or pytest.
 
-- **Test_DB.py:** Contiene las pruebas relacionadas con las funcionalidades de la base de datos
+- **Test_DB.py:** Contains tests related to the database functionalities
 
 7. *Templates*
 
-Contiene los archivos html vinculados a flask para el desarrollo de la plicaión web.
+Contains the html files linked to flask for the development of the web application.
 
-## Uso de las Pruebas Unitarias 
+## Use of Unit Tests 
 
-Para ejecutar las pruebas unitarias desde el directorio raíz, ejecuta el archivo ```Test_DB.py``` con el siguiente comando:
+To run unit tests from the root directory, run the file ```Test_DB.py``` with the following command:
 
-- **Casos de prueba para el juego de batalla naval:**
+- **Test cases for naval battle game:**
 ```python tests\NavalBattle_test.py``` 
 
-- **Casos de prueba de la base de datos:**
-```python tests\DB_test.py```  
+- **Database test cases:**
+```python tests\DB_test.py```
