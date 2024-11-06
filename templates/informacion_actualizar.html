@@ -59,15 +59,21 @@
     <div class="container">
         <h1>Actualizar Partida: {{ starting_code }}</h1>
         <p>Ingresa los datos de la partida para actualizarla.</p>
-        <form action="/actualizar_partida" method="POST">
-            <input type="text" name="rows" value="{{ rows }}" placeholder="Filas">
-            <input type="text" name="columns" value="{{ columns }}" placeholder="Columnas">
-            <input type="text" name="ship_count" value="{{ ship_count }}" placeholder="Cantidad de Barcos">
-            <input type="text" name="hits" value="{{ hits }}" placeholder="Aciertos">
-            <input type="text" name="misses" value="{{ misses }}" placeholder="Fallos">
-            <input type="text" name="total_shots" value="{{ total_shots }}" placeholder="Total de Disparos">
-            <input type="text" name="max_possible_shots" value="{{ max_possible_shots }}" placeholder="Máximo de Disparos">
-            <input type="text" name="score" value="{{ score }}" placeholder="Puntaje">
+        <form action="/informacion_actualizar" method="POST">
+            <label for="starting_code">Código partida</label>
+            <input type="text" id="starting_code" name="starting_code" placeholder="5 digitos numéricos" required><br>
+            <label for="rows">Filas:</label>
+            <input type="text" id="rows" name="rows" placeholder="Entre 5 y 9" required><br>
+            <label for="columns">Columnas:</label>
+            <input type="text" id="columns" name="columns" placeholder="Entre 5 y 9" required><br>
+            <label for="ship_count">Barcos:</label>
+            <input type="text" id="ship_count" name="ship_count" required><br>
+            <label for="hits">Impactos:</label>
+            <input type="text" id="hits" name="hits" required><br>
+            <label for="misses">Fallos:</label>
+            <input type="text" id="misses" name="misses" required><br>
+            <label for="score">Puntaje:</label>
+            <input type="text" id="score" name="score" placeholder="Máximo 5 dígitos"required><br>
             <button type="submit" class="submit-btn">Guardar Cambios</button>
         </form>
     </div>

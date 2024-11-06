@@ -44,7 +44,7 @@
         th {
             background-color: #f0f8ff;
         }
-        .back-btn {
+        .btn {
             padding: 10px 20px;
             background-color: #4682b4;
             color: white;
@@ -60,11 +60,11 @@
 </head>
 <body>
     <div class="container">
-        <h1>Datos de la Partida</h1>
+        <h1>Datos de la Partida {{starting_code}}</h1>
         <table>
             <tr>
                 <th>ID</th>
-                <td>{{partida}}</td>
+                <td>{{starting_code}}</td>
             </tr>
             <tr>
                 <th>Tablero</th>
@@ -91,8 +91,7 @@
                 <td>{{puntaje}}</td>
             </tr>
         </table>
-        <a href="/buscar" class="back-btn">Volver a Buscar</a>
-        <a href="/menu" class="back-btn">Volver al menu</a>
+        <a href="/informacion_actualizar" class="btn">Actualizar</a>
     </div>
 </body>
 </html>
