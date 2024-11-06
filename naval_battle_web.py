@@ -188,6 +188,9 @@ class RouteApp:
         return render_template('insertar_partida.html')
 
     
+    @naval_battle_web.route('/actualizar', methods=['GET', 'POST'])
+    def actualizar_partida():
+        pass
 
 if __name__ == '__main__':
     naval_battle_web.run(debug=True)

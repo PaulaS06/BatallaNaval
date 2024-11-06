@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de la Partida - Batalla Naval</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 24px;
+            color: #2e8b57;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        .submit-btn {
+            padding: 10px 20px;
+            background-color: #4682b4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .submit-btn:hover {
+            background-color: #4169e1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Detalles de la Partida Actualizada</h1>
+        <table>
+            <tr><th>Código de la Partida</th><td>{{ codigo_partida }}</td></tr>
+            <tr><th>Filas</th><td>{{ rows }}</td></tr>
+            <tr><th>Columnas</th><td>{{ columns }}</td></tr>
+            <tr><th>Barcos</th><td>{{ ship_count }}</td></tr>
+            <tr><th>Aciertos</th><td>{{ hits }}</td></tr>
+            <tr><th>Fallos</th><td>{{ misses }}</td></tr>
+            <tr><th>Total de Disparos</th><td>{{ total_shots }}</td></tr>
+            <tr><th>Máximo de Disparos Posibles</th><td>{{ max_possible_shots }}</td></tr>
+            <tr><th>Puntaje</th><td>{{ score }}</td></tr>
+        </table>
+        <a href="/actualizar_partida?codigo_partida={{ codigo_partida }}" class="submit-btn">Actualizar Partida</a>
+    </div>
+</body>
+</html>
