@@ -1,5 +1,4 @@
-## ¿Quién hizo esto?
-
+## Autores
 Entrega 1, 2, 3
 - Daniel Calle
 - Dilan Urrego
@@ -13,17 +12,14 @@ Entrega 4
 - Paula Meneses
 
 ## ¿Qué es y para qué es?
-
 - El juego de Batalla Naval es un juego de estrategia en el que el objetivo es hundir los barcos del oponente (en este caso la máquina) adivinando sus ubicaciones en un tablero.
 - El juego de Batalla Naval en modalidad individual proporciona un desafío de lógica y estrategia, ya que el jugador debe deducir la posición de los barcos enemigos basándose en los resultados de sus disparos. Además, es entretenido y puede mejorar la capacidad de razonamiento lógico y la toma de decisiones del jugador.
 
 ## ¿Cómo lo hago funcionar?
-
 - **Prerrequisitos:**
 Instalar Python: Asegúrate de tener Python instalado en tu sistema. Puedes descargarlo e instalarlo desde python.org.
 
 - **Librerías:** Las librerías usadas para este desarrollo son "random" y "kivy", "random" está incluida por defecto en pyhon; debes instalar "kivy" para poder correr la aplicación desde una interfaz gráfica.
-
 
 - **Ejecución del juego en consola:**
 Navega a la carpeta: Una vez que hayas clonado el repositorio, abre el cmd busca la siguiente ruta que contiene la carpeta con el archivo:
@@ -37,20 +33,48 @@ Navega a la carpeta: Una vez que hayas clonado el repositorio, abre el cmd busca
 Navega a la carpeta: Una vez que hayas clonado el repositorio, abre el cmd busca la siguiente ruta que contiene la carpeta con el archivo:
 ```src\view\GUI\NavalBattle-gui.py```
 
-- ### **Ejecución de la Base de Datos en aplicación web**
+- ## **Ejecución de la Base de Datos en aplicación web**
 Busca el archivo principal: Una vez que hayas clonado el repositorio, abre el cmd busca el siguiente archivo:
 ```naval_battle_web.py```
 
-- **Librerías para la aplcación web:** Las librerías usadas para este desarrollo son "psycopg2" y "flask", para instalarlas ejecuta por consola: 
-```pip install psycopg2```
-```pip install flask```
+**Librerías para la aplcación web:** Las librerías usadas para este desarrollo son "psycopg2", "sqlite3" y "flask", para instalarlas ejecuta por consola: 
 
-Al correr el archivo principal, podrás obtener el link que deberás pegar en el explorador de tu preferencia para visualizar la aplicación web.
-En la aplicación web podras elegir como quieras manipular las partidsa del juego:
+- ```pip install psycopg2```
+
+- ```pip install flask```
+
+- ```pip install sqlite3```
+
+Al correr el archivo principal, te arrojará un link que deberás copiar y pegar en el explorador de tu preferencia para visualizar la aplicación web.
+Por ejemplo: 
+
+```* Running on http://127.0.0.1:5000```
+
+
+En la aplicación web podras elegir como quieras manipular las partidas del juego:
 - Insertar
 - Buscar
 - Eliminar
 - Modificar
+
+## Como hago funcionar la base de datos?
+
+**Prerrequisitos:** Asegurese de tener una cuenta en Neon Console (https://console.neon.tech/), para poder tener sus respectivos datos de acceso.
+
+Realizar los siguientes pasos para configurar la conexión de la Base de Datos:
+
+1. Duplica el archivo ``` Secret_Config-sample.py```  y renómbralo como ``` Secret_Config.py``` . Luego, reemplaza los datos de conexión de tu base de datos de NeonTech dentro de este nuevo archivo(SecretConfig.py).
+Así:
+![alt text](image.png)
+
+
+2. Instala el paquete psycopg2 utilizando el siguiente comando:
+
+```pip install psycopg2```
+
+3. Instala sqlite3 con el siguiente comando: 
+
+```pip install sqlite3```
 
 
 
@@ -137,15 +161,3 @@ Para ejecutar las pruebas unitarias desde el directorio raíz, ejecuta el archiv
 
 - **Casos de prueba de la base de datos:**
 ```python tests\DB_test.py```  
-
-
-## Como hago funcionar la base de datos?
-
-**Prerrequisitos:** Asegurese de tener una base de datos PostgreSQL y sus respectivos datos de acceso.
-
-Luego, realiza los siguientes pasos
-
-1. Duplica el archivo ``` Secret_Config-sample.py```  y renómbralo como ``` Secret_Config.py``` . Luego, configura los datos de conexión a tu base de datos dentro de este nuevo archivo.
-
-2. Instala el paquete psycopg2 utilizando el siguiente comando:
-```pip install psycopg2```
