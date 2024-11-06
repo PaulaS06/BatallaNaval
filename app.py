@@ -2,22 +2,18 @@ from flask import Flask, render_template, request, redirect, url_for
 
 from src.controller.NavalBattleController import Controller_NB
 from src.model.NavalBattleModel import Model_NB
+from src.model.logic.NavalBattle_logic import NonNumericValueError, EmptyStartingCodeError, InvalidLengthCodeError, InvalidTypeError, InvalidDimensionError, NonNumericValueErrorShots, InvalidScoreLimitError
 
 naval_battle_web = Flask(__name__)
-
-# Constantes de mensajes de error
-ERROR_CODIGO_NO_PROPORCIONADO = "Error: código no proporcionado."
-ERROR_CODIGO_NUMERICO = "Error: Debe ingresar un valor numérico."
-ERROR_CODIGO_LONGITUD = "Error: El código de partida debe ser un número de exactamente 5 dígitos."
 
 # Función de validación de código de partida
 def validar_codigo(starting_code):
     if not starting_code:
-        return ERROR_CODIGO_NO_PROPORCIONADO
+        return str(EmptyStartingCodeError())
     if not starting_code.isdigit():
-        return ERROR_CODIGO_NUMERICO
+        return str(NonNumericValueError())
     if len(starting_code) != 5:
-        return ERROR_CODIGO_LONGITUD
+        return str(InvalidLengthCodeError())
     return None
 
 # Función de validación de datos de la partida
@@ -27,22 +23,22 @@ def validar_datos_partida(starting_code, rows, columns, ship_count, hits, misses
         return error
 
     if not rows.isdigit() or not columns.isdigit():
-        return "Error: Debe ingresar un valor numérico para filas y columnas."
+        return str(InvalidTypeError())
     
     rows = int(rows)
     columns = int(columns)
 
     if not (5 <= rows <= 9 and 5 <= columns <= 9):
-        return "Error: El número de filas y columnas debe estar entre 5 y 9."
+        return str(InvalidDimensionError())
     
     if not ship_count.isdigit() or int(ship_count) < 1 or int(ship_count) > min(rows, columns) - 1:
         return f"Error: El número de barcos debe estar entre 1 y {min(rows, columns) - 1}."
 
     if not hits.isdigit() or not misses.isdigit():
-        return "Error: Impactos y fallos deben ser numéricos."
+        return str(NonNumericValueErrorShots())
 
     if not score.isdigit() or not (0 <= int(score) <= 99999):
-        return "Error: El puntaje debe ser un número entre 0 y 99999."
+        return str(InvalidScoreLimitError())
 
     return None
 
@@ -168,8 +164,8 @@ class RouteApp:
                 result_message = f'Partida {starting_code} insertada exitosamente.'
                 return render_template('anuncio_insertar.html', result_message=result_message, starting_code=starting_code)
     
-            except Exception as e:
-                result_message = f'Error al insertar la partida. Detalles: {str(e)}'
+            except Exception:
+                result_message = f'Error al insertar la partida.'
                 return render_template('anuncio_insertar.html', result_message=result_message)
         return render_template('insertar_partida.html')
     
@@ -253,13 +249,30 @@ class RouteApp:
                 )
 
                 Controller_NB.Actualizar(starting_code, partida_actualizada)
-                result_message = f'Partida {starting_code} actualizada exitosamente.'
-                return render_template('anuncio_actualizar.html', result_message=result_message)
+                return render_template('anuncio_actualizada.html', starting_code=starting_code)
 
-            except Exception as e:
-                result_message = f'Error al actualizar la partida. Detalles: {str(e)}'
+            except Exception:
+                result_message = f'Error al actualizar la partida.'
                 return render_template('anuncio_actualizar.html', result_message=result_message)
         return render_template('informacion_actualizar.html')
     
+    @naval_battle_web.route('/anuncio_actualizada', methods=['GET'])
+    def anuncio_actualizada():
+        starting_code = request.args.get('starting_code')
+        return render_template('anuncio_actualizada.html', starting_code=starting_code)
+    
+    @naval_battle_web.route('/informacion_actualizada/<starting_code>', methods=['GET'])
+    def informacion_actualizada(starting_code):
+        partida_actualizada = Controller_NB.BuscarCodigoPartida(starting_code)
+    
+        return render_template('informacion_actualizada.html', 
+                    starting_code=partida_actualizada.starting_code,
+                    tablero=partida_actualizada.rows + "x" + partida_actualizada.columns,
+                    impactos=partida_actualizada.hits,
+                    fallos=partida_actualizada.misses,
+                    disparos_totales=partida_actualizada.total_shots,
+                    barcos=partida_actualizada.ship_count, 
+                    puntaje=partida_actualizada.score)
+
     if __name__ == '__main__':
         naval_battle_web.run(debug=True)

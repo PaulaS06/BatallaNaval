@@ -6,9 +6,29 @@ class InvalidStartingCodeError(Exception):
     """Excepción lanzada cuando el código de la partida no es válido."""
     pass
 
+class InvalidLengthCodeError(Exception):
+    """Excepción lanzada cuando la longitud del código no es válida."""
+    def __init__(self, message="Error: El código de partida debe ser un número de exactamente 5 dígitos."):
+        self.message = message
+        super().__init__(self.message)
+
+class EmptyStartingCodeError(Exception):
+    """Excepción lanzada cuando el código no es proporcionado."""
+    def __init__(self, message="Error: código no proporcionado."):
+        self.message = message
+        super().__init__(self.message)
+
 class InvalidDimensionError(Exception):
     """Excepción lanzada cuando el número de filas o columnas no es válido."""
-    pass
+    def __init__(self, message="Error: Debe ingresar un valor entre 5 y 9 para filas y columnas."):
+        self.message = message
+        super().__init__(self.message)
+
+class InvalidTypeError(Exception):
+    """Excepción lanzada cuando el número de filas o columnas no es un valor numérico."""
+    def __init__(self, message="Error: Debe ingresar un valor numérico para filas y columnas."):
+        self.message = message
+        super().__init__(self.message)
 
 class InvalidShipCountError(Exception):
     """Excepción lanzada cuando el número de barcos no es válido."""
@@ -20,7 +40,9 @@ class InvalidScoreError(Exception):
 
 class NonNumericValueError(Exception):
     """Excepción lanzada cuando se ingresa un valor no numérico."""
-    pass
+    def __init__(self, message="Error: Debe ingresar un valor numérico."):
+        self.message = message
+        super().__init__(self.message)
 
 #
 class NotEnoughSpace(Exception):
@@ -54,6 +76,19 @@ class BoardError(Exception):
 class InvalidCoordinate(Exception):
     """Se lanza cuando se ingresa una coordenada inválida."""
     pass
+
+class NonNumericValueErrorShots(Exception):
+    """Se lanza cuando se ingresa un valor no numérico en impactos y fallos."""
+    def __init__(self, message="Error: Impactos y fallos deben ser numéricos."):
+        self.message = message
+        super().__init__(self.message)
+
+class InvalidScoreLimitError(Exception):
+    """Se lanza cuando el puntaje no está en el rango permitido."""
+    def __init__(self, message= "Error: El puntaje debe ser un número entre 0 y 99999."):
+        self.message = message
+        super().__init__(self.message)
+
 
 class NavalBattle:
     # Atributos de clase
