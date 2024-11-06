@@ -50,8 +50,8 @@
 <body>
     <div class="container">
         <h1>¡Partida {{ starting_code }} Guardada!</h1>
-        <p>La partida ha sido ingresada o actualizada correctamente.</p>
-        <a href="/informacion_actualizada" class="back-btn">Ver partida actualizada</a>
+        <p>La partida ha sido actualizada correctamente.</p>
+        <a href="{{ url_for('informacion_actualizada', starting_code=starting_code) }}" class="back-btn">Ver información actualizada</a>
         <a href="/inicio" class="back-btn">Volver al Inicio</a>
     </div>
 </body>

@@ -53,14 +53,17 @@
         .submit-btn:hover {
             background-color: #4169e1;
         }
+        label {
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Actualizar Partida: {{ starting_code }}</h1>
+        <h1>Actualizar Partida {{ starting_code }}:</h1>
         <p>Ingresa los datos de la partida para actualizarla.</p>
         <form action="/informacion_actualizar" method="POST">
-            <label for="starting_code">Código partida</label>
+            <label for="starting_code">Código partida:</label>
             <input type="text" id="starting_code" name="starting_code" placeholder="5 digitos numéricos" required><br>
             <label for="rows">Filas:</label>
             <input type="text" id="rows" name="rows" placeholder="Entre 5 y 9" required><br>
